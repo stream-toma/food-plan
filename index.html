@@ -59,7 +59,10 @@
             <!-- Monday -->
             <div id="monday-card" class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-2 border-gray-200 hover:border-secondary">
                 <div class="bg-primary text-white px-3 py-2 flex justify-between items-center">
-                    <span class="text-xl font-bold">Monday</span>
+                    <div>
+                        <span class="text-xl font-bold">Monday</span>
+                        <div class="text-xs opacity-90 mt-0.5">👥 Serves 3</div>
+                    </div>
                     <span id="monday-badge" class="bg-accent px-2 py-1 rounded-full text-xs font-semibold">706 cal</span>
                 </div>
                 <div class="grid grid-cols-2">
@@ -102,7 +105,10 @@
             <!-- Tuesday -->
             <div id="tuesday-card" class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-2 border-gray-200 hover:border-secondary">
                 <div class="bg-primary text-white px-3 py-2 flex justify-between items-center">
-                    <span class="text-xl font-bold">Tuesday</span>
+                    <div>
+                        <span class="text-xl font-bold">Tuesday</span>
+                        <div class="text-xs opacity-90 mt-0.5">👥 Serves 2</div>
+                    </div>
                     <span id="tuesday-badge" class="bg-accent px-2 py-1 rounded-full text-xs font-semibold">810 cal</span>
                 </div>
                 <div class="grid grid-cols-2">
@@ -146,7 +152,10 @@
             <!-- Wednesday -->
             <div id="wednesday-card" class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-2 border-gray-200 hover:border-secondary">
                 <div class="bg-primary text-white px-3 py-2 flex justify-between items-center">
-                    <span class="text-xl font-bold">Wednesday</span>
+                    <div>
+                        <span class="text-xl font-bold">Wednesday</span>
+                        <div class="text-xs opacity-90 mt-0.5">👥 Serves 3</div>
+                    </div>
                     <span id="wednesday-badge" class="bg-accent px-2 py-1 rounded-full text-xs font-semibold">428 cal</span>
                 </div>
                 <div class="grid grid-cols-2">
@@ -189,7 +198,10 @@
             <!-- Thursday -->
             <div id="thursday-card" class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-2 border-gray-200 hover:border-secondary">
                 <div class="bg-primary text-white px-3 py-2 flex justify-between items-center">
-                    <span class="text-xl font-bold">Thursday</span>
+                    <div>
+                        <span class="text-xl font-bold">Thursday</span>
+                        <div class="text-xs opacity-90 mt-0.5">👥 Serves 3</div>
+                    </div>
                     <span id="thursday-badge" class="bg-accent px-2 py-1 rounded-full text-xs font-semibold">446 cal</span>
                 </div>
                 <div class="grid grid-cols-2">
@@ -232,7 +244,10 @@
             <!-- Friday -->
             <div id="friday-card" class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-2 border-gray-200 hover:border-secondary">
                 <div class="bg-primary text-white px-3 py-2 flex justify-between items-center">
-                    <span class="text-xl font-bold">Friday</span>
+                    <div>
+                        <span class="text-xl font-bold">Friday</span>
+                        <div class="text-xs opacity-90 mt-0.5">👥 Serves 3</div>
+                    </div>
                     <span id="friday-badge" class="bg-accent px-2 py-1 rounded-full text-xs font-semibold">384 cal</span>
                 </div>
                 <div class="grid grid-cols-2">
@@ -270,6 +285,68 @@
                             </ul>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Shopping List -->
+        <div class="bg-white rounded-xl shadow-md overflow-hidden mb-5">
+            <div class="bg-gradient-to-r from-primary to-secondary text-white px-4 py-3">
+                <h2 class="text-lg font-bold">🛒 Weekly Shopping List</h2>
+                <p class="text-xs opacity-90">Quantities calculated based on servings</p>
+            </div>
+            <div class="p-4 grid md:grid-cols-2 gap-4">
+                <!-- Proteins -->
+                <div>
+                    <h3 class="font-bold text-primary text-sm mb-2 border-b border-gray-200 pb-1">🍗 Proteins</h3>
+                    <ul class="space-y-1.5 text-xs">
+                        <li class="flex justify-between items-start">
+                            <span class="text-gray-700">Braai from Home</span>
+                            <span class="text-gray-500 text-right ml-2">× 3 servings</span>
+                        </li>
+                        <li class="flex justify-between items-start">
+                            <span class="text-gray-700">Sliced BBQ Chicken Breast</span>
+                            <span class="text-gray-500 text-right ml-2">280g (2 × 140g)</span>
+                        </li>
+                        <li class="flex justify-between items-start">
+                            <span class="text-gray-700">Lightly Smoked Rainbow Trout</span>
+                            <span class="text-gray-500 text-right ml-2">450g (3 × 150g)</span>
+                        </li>
+                        <li class="flex justify-between items-start">
+                            <span class="text-gray-700">Chicken Thighs Tomato</span>
+                            <span class="text-gray-500 text-right ml-2">600g (3 × 200g)</span>
+                        </li>
+                        <li class="flex justify-between items-start">
+                            <span class="text-gray-700">Turkey Pastrami</span>
+                            <span class="text-gray-500 text-right ml-2">300g (3 × 100g)</span>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Salads -->
+                <div>
+                    <h3 class="font-bold text-primary text-sm mb-2 border-b border-gray-200 pb-1">🥗 Salads</h3>
+                    <ul class="space-y-1.5 text-xs">
+                        <li class="flex justify-between items-start">
+                            <span class="text-gray-700">Summer Bean Salad</span>
+                            <span class="text-gray-500 text-right ml-2">750g (3 × 250g)</span>
+                        </li>
+                        <li class="flex justify-between items-start">
+                            <span class="text-gray-700">Sweet Potato & Butternut</span>
+                            <span class="text-gray-500 text-right ml-2">800g (2 × 400g)</span>
+                        </li>
+                        <li class="flex justify-between items-start">
+                            <span class="text-gray-700">Edamame & Black Rice Salad</span>
+                            <span class="text-gray-500 text-right ml-2">570g (3 × 190g)</span>
+                        </li>
+                        <li class="flex justify-between items-start">
+                            <span class="text-gray-700">Green Summer Crunch Salad</span>
+                            <span class="text-gray-500 text-right ml-2">525g (3 × 175g)</span>
+                        </li>
+                        <li class="flex justify-between items-start">
+                            <span class="text-gray-700">Baby Spinach & Mixed Grain Salad</span>
+                            <span class="text-gray-500 text-right ml-2">600g (3 × 200g)</span>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
