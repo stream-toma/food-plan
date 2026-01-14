@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 1 Meal Plan</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e9ecef 100%);
+            padding: 15px;
+            color: #212529;
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        header {
+            background: linear-gradient(135deg, #2d6a4f 0%, #52b788 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 2.2em;
+            margin-bottom: 5px;
+        }
+
+        .subtitle {
+            font-size: 0.95em;
+            opacity: 0.9;
+        }
+
+        .meal-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .day-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 2px solid #e9ecef;
+        }
+
+        .day-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+            border-color: #52b788;
+        }
+
+        .day-header {
+            background: #2d6a4f;
+            color: white;
+            padding: 10px 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .day-name {
+            font-size: 1.3em;
+            font-weight: 700;
+        }
+
+        .calories-badge {
+            background: #f77f00;
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-size: 0.85em;
+            font-weight: 600;
+        }
+
+        .images-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+        }
+
+        .meal-image-container {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .meal-image {
+            width: 100%;
+            height: 140px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .image-label {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(45, 106, 79, 0.85);
+            color: white;
+            padding: 4px 8px;
+            font-size: 0.7em;
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .meal-info {
+            padding: 12px;
+        }
+
+        .meal-row {
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px dashed #e9ecef;
+        }
+
+        .meal-row:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .meal-primary {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 4px;
+            font-size: 0.85em;
+        }
+
+        .meal-name {
+            font-weight: 600;
+            color: #2d6a4f;
+        }
+
+        .meal-name a {
+            color: #2d6a4f;
+            text-decoration: none;
+        }
+
+        .meal-name a:hover {
+            color: #52b788;
+        }
+
+        .meal-details {
+            color: #6c757d;
+            font-size: 0.95em;
+        }
+
+        .fallback {
+            font-size: 0.75em;
+            color: #6c757d;
+            margin-top: 3px;
+            font-style: italic;
+        }
+
+        .fallback-label {
+            color: #f77f00;
+            font-weight: 600;
+        }
+
+        @media (max-width: 1200px) {
+            .meal-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .meal-grid {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🍽️ Week 1 Meal Plan</h1>
+            <p class="subtitle">Healthy Woolworths Lunches</p>
+        </header>
+
+        <div class="meal-grid">
+            <!-- Monday -->
+            <div class="day-card">
+                <div class="day-header">
+                    <span class="day-name">Monday</span>
+                    <span class="calories-badge">1,650 cal</span>
+                </div>
+                <div class="images-row">
+                    <div class="meal-image-container">
+                        <img src="https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?w=400&h=300&fit=crop" alt="Braai" class="meal-image">
+                        <div class="image-label">Braai</div>
+                    </div>
+                    <div class="meal-image-container">
+                        <img src="images/sweet_potato_butternut.jpg" alt="Sweet Potato & Butternut" class="meal-image">
+                        <div class="image-label">Sweet Potato & Butternut</div>
+                    </div>
+                </div>
+                <div class="meal-info">
+                    <div class="meal-row">
+                        <div class="meal-primary">
+                            <span class="meal-name">Braai from Home</span>
+                            <span class="meal-details">500 cal</span>
+                        </div>
+                        <div class="fallback">
+                            <span class="fallback-label">Alt:</span> Rotisserie chicken / Biltong
+                        </div>
+                    </div>
+                    <div class="meal-row">
+                        <div class="meal-primary">
+                            <span class="meal-name"><a href="https://www.woolworths.co.za/prod/_/A-6009233586378" target="_blank">Sweet Potato & Butternut</a></span>
+                            <span class="meal-details">800g • 1,200 cal</span>
+                        </div>
+                        <div class="fallback">
+                            <span class="fallback-label">Alt:</span> Roasted Butternut & Beetroot Salad
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tuesday -->
+            <div class="day-card">
+                <div class="day-header">
+                    <span class="day-name">Tuesday</span>
+                    <span class="calories-badge">508 cal</span>
+                </div>
+                <div class="images-row">
+                    <div class="meal-image-container">
+                        <img src="images/chicken_breast.jpg" alt="BBQ Chicken Breast" class="meal-image">
+                        <div class="image-label">BBQ Chicken Breast</div>
+                    </div>
+                    <div class="meal-image-container">
+                        <img src="images/smoky_four_bean.jpg" alt="Smoky Four Bean" class="meal-image">
+                        <div class="image-label">Smoky Four Bean</div>
+                    </div>
+                </div>
+                <div class="meal-info">
+                    <div class="meal-row">
+                        <div class="meal-primary">
+                            <span class="meal-name"><a href="https://www.woolworths.co.za/prod/_/A-6009211657991" target="_blank">BBQ Chicken Breast</a></span>
+                            <span class="meal-details">140g • 210 cal</span>
+                        </div>
+                        <div class="fallback">
+                            <span class="fallback-label">Alt:</span> Grilled chicken strips / Chicken pastrami
+                        </div>
+                    </div>
+                    <div class="meal-row">
+                        <div class="meal-primary">
+                            <span class="meal-name"><a href="https://www.woolworths.co.za/prod/_/A-6009211676534" target="_blank">Smoky Four Bean</a></span>
+                            <span class="meal-details">250g • 298 cal</span>
+                        </div>
+                        <div class="fallback">
+                            <span class="fallback-label">Alt:</span> Summer Bean Salad / 3 Bean Salad
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Wednesday -->
+            <div class="day-card">
+                <div class="day-header">
+                    <span class="day-name">Wednesday</span>
+                    <span class="calories-badge">428 cal</span>
+                </div>
+                <div class="images-row">
+                    <div class="meal-image-container">
+                        <img src="images/smoked_trout.jpg" alt="Smoked Trout" class="meal-image">
+                        <div class="image-label">Smoked Trout</div>
+                    </div>
+                    <div class="meal-image-container">
+                        <img src="images/edamame_black_rice.jpg" alt="Edamame & Black Rice" class="meal-image">
+                        <div class="image-label">Edamame & Black Rice</div>
+                    </div>
+                </div>
+                <div class="meal-info">
+                    <div class="meal-row">
+                        <div class="meal-primary">
+                            <span class="meal-name"><a href="https://www.woolworths.co.za/prod/_/A-6009207839301" target="_blank">Lightly Smoked Trout</a></span>
+                            <span class="meal-details">150g • 200 cal</span>
+                        </div>
+                        <div class="fallback">
+                            <span class="fallback-label">Alt:</span> Trout rashers / Smoked salmon / Tuna
+                        </div>
+                    </div>
+                    <div class="meal-row">
+                        <div class="meal-primary">
+                            <span class="meal-name"><a href="https://www.woolworths.co.za/prod/_/A-6007875960112" target="_blank">Edamame & Black Rice</a></span>
+                            <span class="meal-details">190g • 228 cal</span>
+                        </div>
+                        <div class="fallback">
+                            <span class="fallback-label">Alt:</span> Sticky Rice Salad / Asian Style Slaw
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Thursday -->
+            <div class="day-card">
+                <div class="day-header">
+                    <span class="day-name">Thursday</span>
+                    <span class="calories-badge">682 cal</span>
+                </div>
+                <div class="images-row">
+                    <div class="meal-image-container">
+                        <img src="images/chicken_thighs.jpg" alt="Chicken Thighs" class="meal-image">
+                        <div class="image-label">Chicken Thighs</div>
+                    </div>
+                    <div class="meal-image-container">
+                        <img src="images/butternut_grain.jpg" alt="Butternut & Grain" class="meal-image">
+                        <div class="image-label">Butternut & Grain</div>
+                    </div>
+                </div>
+                <div class="meal-info">
+                    <div class="meal-row">
+                        <div class="meal-primary">
+                            <span class="meal-name"><a href="https://www.woolworths.co.za/prod/_/A-2095760000009" target="_blank">Sundried Tomato Chicken Thighs</a></span>
+                            <span class="meal-details">200g • 300 cal</span>
+                        </div>
+                        <div class="fallback">
+                            <span class="fallback-label">Alt:</span> Rotisserie chicken / Chicken espetadas
+                        </div>
+                    </div>
+                    <div class="meal-row">
+                        <div class="meal-primary">
+                            <span class="meal-name"><a href="https://www.woolworths.co.za/prod/_/A-6009233581106" target="_blank">Butternut & Grain</a></span>
+                            <span class="meal-details">200g • 382 cal</span>
+                        </div>
+                        <div class="fallback">
+                            <span class="fallback-label">Alt:</span> Pesto Couscous & Butternut / Roasted Veg Salad
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Friday -->
+            <div class="day-card">
+                <div class="day-header">
+                    <span class="day-name">Friday</span>
+                    <span class="calories-badge">415 cal</span>
+                </div>
+                <div class="images-row">
+                    <div class="meal-image-container">
+                        <img src="images/turkey_pastrami.jpg" alt="Turkey Pastrami" class="meal-image">
+                        <div class="image-label">Turkey Pastrami</div>
+                    </div>
+                    <div class="meal-image-container">
+                        <img src="images/sweet_potato_salad.jpg" alt="Sweet Potato Salad" class="meal-image">
+                        <div class="image-label">Sweet Potato Salad</div>
+                    </div>
+                </div>
+                <div class="meal-info">
+                    <div class="meal-row">
+                        <div class="meal-primary">
+                            <span class="meal-name"><a href="https://www.woolworths.co.za/prod/_/A-6009211674974" target="_blank">Turkey Pastrami</a></span>
+                            <span class="meal-details">100g • 101 cal</span>
+                        </div>
+                        <div class="fallback">
+                            <span class="fallback-label">Alt:</span> Chicken pastrami / Beef pastrami / Ham
+                        </div>
+                    </div>
+                    <div class="meal-row">
+                        <div class="meal-primary">
+                            <span class="meal-name"><a href="https://www.woolworths.co.za/prod/_/A-6009226711879" target="_blank">Sweet Potato Salad</a></span>
+                            <span class="meal-details">225g • 314 cal</span>
+                        </div>
+                        <div class="fallback">
+                            <span class="fallback-label">Alt:</span> Green Summer Crunch / Tzatziki Style Salad
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
