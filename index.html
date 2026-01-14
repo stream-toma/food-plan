@@ -4,388 +4,355 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Week 1 Meal Plan</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #f5f7fa 0%, #e9ecef 100%);
-            padding: 15px;
-            color: #212529;
-        }
-
-        .container {
-            max-width: 1600px;
-            margin: 0 auto;
-        }
-
-        header {
-            background: linear-gradient(135deg, #2d6a4f 0%, #52b788 100%);
-            color: white;
-            padding: 25px;
-            border-radius: 12px;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        h1 {
-            font-size: 2.2em;
-            margin-bottom: 5px;
-        }
-
-        .subtitle {
-            font-size: 0.95em;
-            opacity: 0.9;
-        }
-
-        .meal-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 15px;
-            margin-bottom: 20px;
-        }
-
-        .day-card {
-            background: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-            border: 2px solid #e9ecef;
-        }
-
-        .day-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 16px rgba(0,0,0,0.15);
-            border-color: #52b788;
-        }
-
-        .day-header {
-            background: #2d6a4f;
-            color: white;
-            padding: 10px 12px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .day-name {
-            font-size: 1.3em;
-            font-weight: 700;
-        }
-
-        .calories-badge {
-            background: #f77f00;
-            padding: 4px 10px;
-            border-radius: 15px;
-            font-size: 0.85em;
-            font-weight: 600;
-        }
-
-        .images-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 0;
-        }
-
-        .meal-image-container {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .meal-image {
-            width: 100%;
-            height: 140px;
-            object-fit: cover;
-            display: block;
-        }
-
-        .image-label {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: rgba(45, 106, 79, 0.85);
-            color: white;
-            padding: 4px 8px;
-            font-size: 0.7em;
-            text-transform: uppercase;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-        }
-
-        .meal-info {
-            padding: 12px;
-        }
-
-        .meal-row {
-            margin-bottom: 10px;
-            padding-bottom: 10px;
-            border-bottom: 1px dashed #e9ecef;
-        }
-
-        .meal-row:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
-            padding-bottom: 0;
-        }
-
-        .meal-primary {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 4px;
-            font-size: 0.85em;
-        }
-
-        .meal-name {
-            font-weight: 600;
-            color: #2d6a4f;
-        }
-
-        .meal-name a {
-            color: #2d6a4f;
-            text-decoration: none;
-        }
-
-        .meal-name a:hover {
-            color: #52b788;
-        }
-
-        .meal-details {
-            color: #6c757d;
-            font-size: 0.95em;
-        }
-
-        .fallback {
-            font-size: 0.75em;
-            color: #6c757d;
-            margin-top: 3px;
-            font-style: italic;
-        }
-
-        .fallback-label {
-            color: #f77f00;
-            font-weight: 600;
-        }
-
-        @media (max-width: 1200px) {
-            .meal-grid {
-                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2d6a4f',
+                        secondary: '#52b788',
+                        accent: '#f77f00',
+                    }
+                }
             }
         }
-
-        @media (max-width: 768px) {
-            .meal-grid {
-                grid-template-columns: 1fr;
-            }
-
-            h1 {
-                font-size: 1.8em;
-            }
-        }
-    </style>
+    </script>
 </head>
-<body>
-    <div class="container">
-        <header>
-            <h1>🍽️ Week 1 Meal Plan</h1>
-            <p class="subtitle">Healthy Woolworths Lunches</p>
+<body class="bg-gradient-to-br from-gray-50 to-gray-200 p-4">
+    <div class="max-w-7xl mx-auto">
+        <!-- Header -->
+        <header class="bg-gradient-to-r from-primary to-secondary text-white rounded-xl text-center py-6 px-8 mb-5">
+            <h1 class="text-4xl font-bold mb-1">🍽️ Week 1 Meal Plan</h1>
+            <p class="text-sm opacity-90">Healthy Woolworths Lunches</p>
         </header>
 
-        <div class="meal-grid">
+        <!-- Meal Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 mb-5">
             <!-- Monday -->
-            <div class="day-card">
-                <div class="day-header">
-                    <span class="day-name">Monday</span>
-                    <span class="calories-badge">706 cal</span>
+            <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-2 border-gray-200 hover:border-secondary">
+                <div class="bg-primary text-white px-3 py-2 flex justify-between items-center">
+                    <span class="text-xl font-bold">Monday</span>
+                    <span class="bg-accent px-2 py-1 rounded-full text-xs font-semibold">706 cal</span>
                 </div>
-                <div class="images-row">
-                    <div class="meal-image-container">
-                        <img src="https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?w=400&h=300&fit=crop" alt="Braai" class="meal-image">
-                        <div class="image-label">Braai</div>
+                <div class="grid grid-cols-2">
+                    <div class="relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?w=400&h=300&fit=crop" alt="Braai" class="w-full h-36 object-cover">
+                        <div class="absolute bottom-0 left-0 right-0 bg-primary/85 text-white px-2 py-1 text-xs uppercase font-semibold tracking-wide">Braai</div>
                     </div>
-                    <div class="meal-image-container">
-                        <img src="images/summer_bean.jpg" alt="Summer Bean Salad" class="meal-image">
-                        <div class="image-label">Summer Bean Salad</div>
+                    <div class="relative overflow-hidden">
+                        <img src="images/summer_bean.jpg" alt="Summer Bean Salad" class="w-full h-36 object-cover">
+                        <div class="absolute bottom-0 left-0 right-0 bg-primary/85 text-white px-2 py-1 text-xs uppercase font-semibold tracking-wide">Summer Bean Salad</div>
                     </div>
                 </div>
-                <div class="meal-info">
-                    <div class="meal-row">
-                        <div class="meal-primary">
-                            <span class="meal-name">Braai from Home</span>
-                            <span class="meal-details">500 cal</span>
+                <div class="p-3">
+                    <div class="mb-2 pb-2 border-b border-dashed border-gray-200">
+                        <div class="flex justify-between text-xs mb-1">
+                            <span class="font-semibold text-primary">Braai from Home</span>
+                            <span class="text-gray-600">500 cal</span>
                         </div>
-                        <div class="fallback">
-                            <span class="fallback-label">Alt:</span> Rotisserie chicken / Biltong
+                        <div class="text-xs text-gray-500 italic mt-1">
+                            <span class="text-accent font-semibold">Alt:</span> Rotisserie chicken / Biltong
                         </div>
                     </div>
-                    <div class="meal-row">
-                        <div class="meal-primary">
-                            <span class="meal-name"><a href="https://www.woolworths.co.za/prod/_/A-6009195201166" target="_blank">Summer Bean Salad</a></span>
-                            <span class="meal-details">250g • 206 cal</span>
+                    <div>
+                        <div class="flex justify-between text-xs mb-1">
+                            <span class="font-semibold text-primary"><a href="https://www.woolworths.co.za/prod/_/A-6009195201166" target="_blank" class="hover:text-secondary">Summer Bean Salad</a></span>
+                            <span class="text-gray-600">250g • 206 cal</span>
                         </div>
-                        <div class="fallback">
-                            <span class="fallback-label">Alt:</span> Edamame & Black Rice Salad / Crunchy Asian Style Slaw
+                        <div class="text-xs text-gray-500 italic mt-1">
+                            <span class="text-accent font-semibold">Alt:</span> Edamame & Black Rice Salad / Crunchy Asian Style Slaw
                         </div>
                     </div>
                 </div>
             </div>
 
             <!-- Tuesday -->
-            <div class="day-card">
-                <div class="day-header">
-                    <span class="day-name">Tuesday</span>
-                    <span class="calories-badge">810 cal</span>
+            <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-2 border-gray-200 hover:border-secondary">
+                <div class="bg-primary text-white px-3 py-2 flex justify-between items-center">
+                    <span class="text-xl font-bold">Tuesday</span>
+                    <span class="bg-accent px-2 py-1 rounded-full text-xs font-semibold">810 cal</span>
                 </div>
-                <div class="images-row">
-                    <div class="meal-image-container">
-                        <img src="images/chicken_breast.jpg" alt="BBQ Chicken Breast" class="meal-image">
-                        <div class="image-label">BBQ Chicken Breast</div>
+                <div class="grid grid-cols-2">
+                    <div class="relative overflow-hidden">
+                        <img src="images/chicken_breast.jpg" alt="BBQ Chicken Breast" class="w-full h-36 object-cover">
+                        <div class="absolute bottom-0 left-0 right-0 bg-primary/85 text-white px-2 py-1 text-xs uppercase font-semibold tracking-wide">BBQ Chicken Breast</div>
                     </div>
-                    <div class="meal-image-container">
-                        <img src="images/sweet_potato_butternut.jpg" alt="Sweet Potato & Butternut" class="meal-image">
-                        <div class="image-label">Sweet Potato & Butternut</div>
+                    <div class="relative overflow-hidden">
+                        <img src="images/sweet_potato_butternut.jpg" alt="Sweet Potato & Butternut" class="w-full h-36 object-cover">
+                        <div class="absolute bottom-0 left-0 right-0 bg-primary/85 text-white px-2 py-1 text-xs uppercase font-semibold tracking-wide">Sweet Potato & Butternut</div>
                     </div>
                 </div>
-                <div class="meal-info">
-                    <div class="meal-row">
-                        <div class="meal-primary">
-                            <span class="meal-name"><a href="https://www.woolworths.co.za/prod/_/A-6009211657991" target="_blank">BBQ Chicken Breast</a></span>
-                            <span class="meal-details">140g • 210 cal</span>
+                <div class="p-3">
+                    <div class="mb-2 pb-2 border-b border-dashed border-gray-200">
+                        <div class="flex justify-between text-xs mb-1">
+                            <span class="font-semibold text-primary"><a href="https://www.woolworths.co.za/prod/_/A-6009211657991" target="_blank" class="hover:text-secondary">BBQ Chicken Breast</a></span>
+                            <span class="text-gray-600">140g • 210 cal</span>
                         </div>
-                        <div class="fallback">
-                            <span class="fallback-label">Alt:</span> Grilled chicken strips / Chicken pastrami
+                        <div class="text-xs text-gray-500 italic mt-1">
+                            <span class="text-accent font-semibold">Alt:</span> Grilled chicken strips / Chicken pastrami
                         </div>
                     </div>
-                    <div class="meal-row">
-                        <div class="meal-primary">
-                            <span class="meal-name"><a href="https://www.woolworths.co.za/prod/_/A-6009233586378" target="_blank">Sweet Potato & Butternut</a></span>
-                            <span class="meal-details">400g • 600 cal</span>
+                    <div>
+                        <div class="flex justify-between text-xs mb-1">
+                            <span class="font-semibold text-primary"><a href="https://www.woolworths.co.za/prod/_/A-6009233586378" target="_blank" class="hover:text-secondary">Sweet Potato & Butternut</a></span>
+                            <span class="text-gray-600">400g • 600 cal</span>
                         </div>
-                        <div class="fallback">
-                            <span class="fallback-label">Alt:</span> Roasted Butternut & Beetroot Salad / Baby Spinach & Mixed Grain Salad
+                        <div class="text-xs text-gray-500 italic mt-1">
+                            <span class="text-accent font-semibold">Alt:</span> Roasted Butternut & Beetroot Salad / Baby Spinach & Mixed Grain Salad
                         </div>
                     </div>
                 </div>
             </div>
 
             <!-- Wednesday -->
-            <div class="day-card">
-                <div class="day-header">
-                    <span class="day-name">Wednesday</span>
-                    <span class="calories-badge">428 cal</span>
+            <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-2 border-gray-200 hover:border-secondary">
+                <div class="bg-primary text-white px-3 py-2 flex justify-between items-center">
+                    <span class="text-xl font-bold">Wednesday</span>
+                    <span class="bg-accent px-2 py-1 rounded-full text-xs font-semibold">428 cal</span>
                 </div>
-                <div class="images-row">
-                    <div class="meal-image-container">
-                        <img src="images/smoked_trout.jpg" alt="Smoked Trout" class="meal-image">
-                        <div class="image-label">Smoked Trout</div>
+                <div class="grid grid-cols-2">
+                    <div class="relative overflow-hidden">
+                        <img src="images/smoked_trout.jpg" alt="Smoked Trout" class="w-full h-36 object-cover">
+                        <div class="absolute bottom-0 left-0 right-0 bg-primary/85 text-white px-2 py-1 text-xs uppercase font-semibold tracking-wide">Smoked Trout</div>
                     </div>
-                    <div class="meal-image-container">
-                        <img src="images/edamame_black_rice.jpg" alt="Edamame & Black Rice" class="meal-image">
-                        <div class="image-label">Edamame & Black Rice</div>
+                    <div class="relative overflow-hidden">
+                        <img src="images/edamame_black_rice.jpg" alt="Edamame & Black Rice" class="w-full h-36 object-cover">
+                        <div class="absolute bottom-0 left-0 right-0 bg-primary/85 text-white px-2 py-1 text-xs uppercase font-semibold tracking-wide">Edamame & Black Rice</div>
                     </div>
                 </div>
-                <div class="meal-info">
-                    <div class="meal-row">
-                        <div class="meal-primary">
-                            <span class="meal-name"><a href="https://www.woolworths.co.za/prod/_/A-6009207839301" target="_blank">Lightly Smoked Trout</a></span>
-                            <span class="meal-details">150g • 200 cal</span>
+                <div class="p-3">
+                    <div class="mb-2 pb-2 border-b border-dashed border-gray-200">
+                        <div class="flex justify-between text-xs mb-1">
+                            <span class="font-semibold text-primary"><a href="https://www.woolworths.co.za/prod/_/A-6009207839301" target="_blank" class="hover:text-secondary">Lightly Smoked Trout</a></span>
+                            <span class="text-gray-600">150g • 200 cal</span>
                         </div>
-                        <div class="fallback">
-                            <span class="fallback-label">Alt:</span> Trout rashers / Smoked salmon / Tuna
+                        <div class="text-xs text-gray-500 italic mt-1">
+                            <span class="text-accent font-semibold">Alt:</span> Trout rashers / Smoked salmon / Tuna
                         </div>
                     </div>
-                    <div class="meal-row">
-                        <div class="meal-primary">
-                            <span class="meal-name"><a href="https://www.woolworths.co.za/prod/_/A-6007875960112" target="_blank">Edamame & Black Rice</a></span>
-                            <span class="meal-details">190g • 228 cal</span>
+                    <div>
+                        <div class="flex justify-between text-xs mb-1">
+                            <span class="font-semibold text-primary"><a href="https://www.woolworths.co.za/prod/_/A-6007875960112" target="_blank" class="hover:text-secondary">Edamame & Black Rice</a></span>
+                            <span class="text-gray-600">190g • 228 cal</span>
                         </div>
-                        <div class="fallback">
-                            <span class="fallback-label">Alt:</span> Crunchy Asian Style Slaw / Baby Spinach & Mixed Grain Salad
+                        <div class="text-xs text-gray-500 italic mt-1">
+                            <span class="text-accent font-semibold">Alt:</span> Crunchy Asian Style Slaw / Baby Spinach & Mixed Grain Salad
                         </div>
                     </div>
                 </div>
             </div>
 
             <!-- Thursday -->
-            <div class="day-card">
-                <div class="day-header">
-                    <span class="day-name">Thursday</span>
-                    <span class="calories-badge">446 cal</span>
+            <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-2 border-gray-200 hover:border-secondary">
+                <div class="bg-primary text-white px-3 py-2 flex justify-between items-center">
+                    <span class="text-xl font-bold">Thursday</span>
+                    <span class="bg-accent px-2 py-1 rounded-full text-xs font-semibold">446 cal</span>
                 </div>
-                <div class="images-row">
-                    <div class="meal-image-container">
-                        <img src="images/chicken_thighs.jpg" alt="Chicken Thighs" class="meal-image">
-                        <div class="image-label">Chicken Thighs</div>
+                <div class="grid grid-cols-2">
+                    <div class="relative overflow-hidden">
+                        <img src="images/chicken_thighs.jpg" alt="Chicken Thighs" class="w-full h-36 object-cover">
+                        <div class="absolute bottom-0 left-0 right-0 bg-primary/85 text-white px-2 py-1 text-xs uppercase font-semibold tracking-wide">Chicken Thighs</div>
                     </div>
-                    <div class="meal-image-container">
-                        <img src="images/green_summer_crunch.jpg" alt="Green Summer Crunch" class="meal-image">
-                        <div class="image-label">Green Summer Crunch</div>
+                    <div class="relative overflow-hidden">
+                        <img src="images/green_summer_crunch.jpg" alt="Green Summer Crunch" class="w-full h-36 object-cover">
+                        <div class="absolute bottom-0 left-0 right-0 bg-primary/85 text-white px-2 py-1 text-xs uppercase font-semibold tracking-wide">Green Summer Crunch</div>
                     </div>
                 </div>
-                <div class="meal-info">
-                    <div class="meal-row">
-                        <div class="meal-primary">
-                            <span class="meal-name"><a href="https://www.woolworths.co.za/prod/_/A-2095760000009" target="_blank">Sundried Tomato Chicken Thighs</a></span>
-                            <span class="meal-details">200g • 300 cal</span>
+                <div class="p-3">
+                    <div class="mb-2 pb-2 border-b border-dashed border-gray-200">
+                        <div class="flex justify-between text-xs mb-1">
+                            <span class="font-semibold text-primary"><a href="https://www.woolworths.co.za/prod/_/A-2095760000009" target="_blank" class="hover:text-secondary">Sundried Tomato Chicken Thighs</a></span>
+                            <span class="text-gray-600">200g • 300 cal</span>
                         </div>
-                        <div class="fallback">
-                            <span class="fallback-label">Alt:</span> Rotisserie chicken / Chicken espetadas
+                        <div class="text-xs text-gray-500 italic mt-1">
+                            <span class="text-accent font-semibold">Alt:</span> Rotisserie chicken / Chicken espetadas
                         </div>
                     </div>
-                    <div class="meal-row">
-                        <div class="meal-primary">
-                            <span class="meal-name"><a href="https://www.woolworths.co.za/prod/_/A-6009217708413" target="_blank">Green Summer Crunch Salad</a></span>
-                            <span class="meal-details">175g • 146 cal</span>
+                    <div>
+                        <div class="flex justify-between text-xs mb-1">
+                            <span class="font-semibold text-primary"><a href="https://www.woolworths.co.za/prod/_/A-6009217708413" target="_blank" class="hover:text-secondary">Green Summer Crunch Salad</a></span>
+                            <span class="text-gray-600">175g • 146 cal</span>
                         </div>
-                        <div class="fallback">
-                            <span class="fallback-label">Alt:</span> Roasted Butternut & Beetroot Salad / Baby Spinach & Mixed Grain Salad
+                        <div class="text-xs text-gray-500 italic mt-1">
+                            <span class="text-accent font-semibold">Alt:</span> Roasted Butternut & Beetroot Salad / Baby Spinach & Mixed Grain Salad
                         </div>
                     </div>
                 </div>
             </div>
 
             <!-- Friday -->
-            <div class="day-card">
-                <div class="day-header">
-                    <span class="day-name">Friday</span>
-                    <span class="calories-badge">384 cal</span>
+            <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-2 border-gray-200 hover:border-secondary">
+                <div class="bg-primary text-white px-3 py-2 flex justify-between items-center">
+                    <span class="text-xl font-bold">Friday</span>
+                    <span class="bg-accent px-2 py-1 rounded-full text-xs font-semibold">384 cal</span>
                 </div>
-                <div class="images-row">
-                    <div class="meal-image-container">
-                        <img src="images/turkey_pastrami.jpg" alt="Turkey Pastrami" class="meal-image">
-                        <div class="image-label">Turkey Pastrami</div>
+                <div class="grid grid-cols-2">
+                    <div class="relative overflow-hidden">
+                        <img src="images/turkey_pastrami.jpg" alt="Turkey Pastrami" class="w-full h-36 object-cover">
+                        <div class="absolute bottom-0 left-0 right-0 bg-primary/85 text-white px-2 py-1 text-xs uppercase font-semibold tracking-wide">Turkey Pastrami</div>
                     </div>
-                    <div class="meal-image-container">
-                        <img src="images/baby_spinach_grain.jpg" alt="Baby Spinach & Mixed Grain" class="meal-image">
-                        <div class="image-label">Baby Spinach & Mixed Grain</div>
+                    <div class="relative overflow-hidden">
+                        <img src="images/baby_spinach_grain.jpg" alt="Baby Spinach & Mixed Grain" class="w-full h-36 object-cover">
+                        <div class="absolute bottom-0 left-0 right-0 bg-primary/85 text-white px-2 py-1 text-xs uppercase font-semibold tracking-wide">Baby Spinach & Mixed Grain</div>
                     </div>
                 </div>
-                <div class="meal-info">
-                    <div class="meal-row">
-                        <div class="meal-primary">
-                            <span class="meal-name"><a href="https://www.woolworths.co.za/prod/_/A-6009211674974" target="_blank">Turkey Pastrami</a></span>
-                            <span class="meal-details">100g • 101 cal</span>
+                <div class="p-3">
+                    <div class="mb-2 pb-2 border-b border-dashed border-gray-200">
+                        <div class="flex justify-between text-xs mb-1">
+                            <span class="font-semibold text-primary"><a href="https://www.woolworths.co.za/prod/_/A-6009211674974" target="_blank" class="hover:text-secondary">Turkey Pastrami</a></span>
+                            <span class="text-gray-600">100g • 101 cal</span>
                         </div>
-                        <div class="fallback">
-                            <span class="fallback-label">Alt:</span> Chicken pastrami / Beef pastrami / Ham
+                        <div class="text-xs text-gray-500 italic mt-1">
+                            <span class="text-accent font-semibold">Alt:</span> Chicken pastrami / Beef pastrami / Ham
                         </div>
                     </div>
-                    <div class="meal-row">
-                        <div class="meal-primary">
-                            <span class="meal-name"><a href="https://www.woolworths.co.za/prod/_/A-6009204131897" target="_blank">Baby Spinach & Mixed Grain Salad</a></span>
-                            <span class="meal-details">200g • 283 cal</span>
+                    <div>
+                        <div class="flex justify-between text-xs mb-1">
+                            <span class="font-semibold text-primary"><a href="https://www.woolworths.co.za/prod/_/A-6009204131897" target="_blank" class="hover:text-secondary">Baby Spinach & Mixed Grain Salad</a></span>
+                            <span class="text-gray-600">200g • 283 cal</span>
                         </div>
-                        <div class="fallback">
-                            <span class="fallback-label">Alt:</span> Green Summer Crunch Salad / Sweet Potato & Butternut Salad
+                        <div class="text-xs text-gray-500 italic mt-1">
+                            <span class="text-accent font-semibold">Alt:</span> Green Summer Crunch Salad / Sweet Potato & Butternut Salad
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
+
+        <!-- Glossary Accordion -->
+        <div class="bg-white rounded-xl shadow-md overflow-hidden" x-data="{ openItem: null }">
+            <div class="bg-gradient-to-r from-primary to-secondary text-white px-6 py-4">
+                <h2 class="text-2xl font-bold">📚 Salad Glossary</h2>
+                <p class="text-sm opacity-90">Click to view approved salad options</p>
+            </div>
+
+            <!-- Summer Bean Salad -->
+            <div class="border-b border-gray-200">
+                <button @click="openItem = openItem === 1 ? null : 1" class="w-full px-6 py-4 flex justify-between items-center hover:bg-gray-50 transition-colors">
+                    <span class="font-semibold text-primary">Summer Bean Salad</span>
+                    <svg :class="openItem === 1 ? 'rotate-180' : ''" class="w-5 h-5 text-gray-500 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                </button>
+                <div x-show="openItem === 1" x-collapse class="px-6 pb-4">
+                    <img src="images/summer_bean.jpg" alt="Summer Bean Salad" class="w-full max-w-md mx-auto rounded-lg mb-3">
+                    <p class="text-sm text-gray-600 mb-2"><strong>Size:</strong> 250g</p>
+                    <p class="text-sm text-gray-600 mb-2"><strong>Calories:</strong> 206 cal</p>
+                    <p class="text-sm text-gray-600"><strong>Description:</strong> Summer bean salad with herb vinaigrette</p>
+                    <a href="https://www.woolworths.co.za/prod/_/A-6009195201166" target="_blank" class="inline-block mt-3 text-secondary hover:text-primary font-semibold text-sm">View on Woolworths →</a>
+                </div>
+            </div>
+
+            <!-- Edamame & Black Rice Salad -->
+            <div class="border-b border-gray-200">
+                <button @click="openItem = openItem === 2 ? null : 2" class="w-full px-6 py-4 flex justify-between items-center hover:bg-gray-50 transition-colors">
+                    <span class="font-semibold text-primary">Edamame & Black Rice Salad</span>
+                    <svg :class="openItem === 2 ? 'rotate-180' : ''" class="w-5 h-5 text-gray-500 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                </button>
+                <div x-show="openItem === 2" x-collapse class="px-6 pb-4">
+                    <img src="images/edamame_black_rice.jpg" alt="Edamame & Black Rice Salad" class="w-full max-w-md mx-auto rounded-lg mb-3">
+                    <p class="text-sm text-gray-600 mb-2"><strong>Size:</strong> 190g</p>
+                    <p class="text-sm text-gray-600 mb-2"><strong>Calories:</strong> 228 cal</p>
+                    <p class="text-sm text-gray-600"><strong>Description:</strong> Edamame and black rice base with spring onion, slaw, and soya dressing</p>
+                    <a href="https://www.woolworths.co.za/prod/_/A-6007875960112" target="_blank" class="inline-block mt-3 text-secondary hover:text-primary font-semibold text-sm">View on Woolworths →</a>
+                </div>
+            </div>
+
+            <!-- Baby Spinach & Mixed Grain Salad -->
+            <div class="border-b border-gray-200">
+                <button @click="openItem = openItem === 3 ? null : 3" class="w-full px-6 py-4 flex justify-between items-center hover:bg-gray-50 transition-colors">
+                    <span class="font-semibold text-primary">Baby Spinach & Mixed Grain Salad</span>
+                    <svg :class="openItem === 3 ? 'rotate-180' : ''" class="w-5 h-5 text-gray-500 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                </button>
+                <div x-show="openItem === 3" x-collapse class="px-6 pb-4">
+                    <img src="images/baby_spinach_grain.jpg" alt="Baby Spinach & Mixed Grain Salad" class="w-full max-w-md mx-auto rounded-lg mb-3">
+                    <p class="text-sm text-gray-600 mb-2"><strong>Size:</strong> 200g</p>
+                    <p class="text-sm text-gray-600 mb-2"><strong>Calories:</strong> 283 cal</p>
+                    <p class="text-sm text-gray-600"><strong>Description:</strong> Baby spinach and mixed grain with creamy South African feta, pomegranate rubies, and apple mint vinaigrette</p>
+                    <a href="https://www.woolworths.co.za/prod/_/A-6009204131897" target="_blank" class="inline-block mt-3 text-secondary hover:text-primary font-semibold text-sm">View on Woolworths →</a>
+                </div>
+            </div>
+
+            <!-- Crunchy Asian Style Slaw -->
+            <div class="border-b border-gray-200">
+                <button @click="openItem = openItem === 4 ? null : 4" class="w-full px-6 py-4 flex justify-between items-center hover:bg-gray-50 transition-colors">
+                    <span class="font-semibold text-primary">Crunchy Asian Style Slaw</span>
+                    <svg :class="openItem === 4 ? 'rotate-180' : ''" class="w-5 h-5 text-gray-500 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                </button>
+                <div x-show="openItem === 4" x-collapse class="px-6 pb-4">
+                    <div class="w-full max-w-md mx-auto bg-gray-100 rounded-lg mb-3 h-48 flex items-center justify-center text-gray-400">
+                        <span class="text-sm">Image not available</span>
+                    </div>
+                    <p class="text-sm text-gray-600 mb-2"><strong>Size:</strong> 160g</p>
+                    <p class="text-sm text-gray-600 mb-2"><strong>Calories:</strong> ~78 cal</p>
+                    <p class="text-sm text-gray-600"><strong>Description:</strong> Crunchy Asian-style slaw</p>
+                </div>
+            </div>
+
+            <!-- Green Summer Crunch Salad -->
+            <div class="border-b border-gray-200">
+                <button @click="openItem = openItem === 5 ? null : 5" class="w-full px-6 py-4 flex justify-between items-center hover:bg-gray-50 transition-colors">
+                    <span class="font-semibold text-primary">Green Summer Crunch Salad</span>
+                    <svg :class="openItem === 5 ? 'rotate-180' : ''" class="w-5 h-5 text-gray-500 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                </button>
+                <div x-show="openItem === 5" x-collapse class="px-6 pb-4">
+                    <img src="images/green_summer_crunch.jpg" alt="Green Summer Crunch Salad" class="w-full max-w-md mx-auto rounded-lg mb-3">
+                    <p class="text-sm text-gray-600 mb-2"><strong>Size:</strong> 175g</p>
+                    <p class="text-sm text-gray-600 mb-2"><strong>Calories:</strong> 146 cal</p>
+                    <p class="text-sm text-gray-600"><strong>Description:</strong> Broccoli, baby marrow, cucumber and apple with basil vinaigrette dressing</p>
+                    <a href="https://www.woolworths.co.za/prod/_/A-6009217708413" target="_blank" class="inline-block mt-3 text-secondary hover:text-primary font-semibold text-sm">View on Woolworths →</a>
+                </div>
+            </div>
+
+            <!-- Sweet Potato & Butternut Salad -->
+            <div class="border-b border-gray-200">
+                <button @click="openItem = openItem === 6 ? null : 6" class="w-full px-6 py-4 flex justify-between items-center hover:bg-gray-50 transition-colors">
+                    <span class="font-semibold text-primary">Sweet Potato & Butternut Salad</span>
+                    <svg :class="openItem === 6 ? 'rotate-180' : ''" class="w-5 h-5 text-gray-500 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                </button>
+                <div x-show="openItem === 6" x-collapse class="px-6 pb-4">
+                    <img src="images/sweet_potato_butternut.jpg" alt="Sweet Potato & Butternut Salad" class="w-full max-w-md mx-auto rounded-lg mb-3">
+                    <p class="text-sm text-gray-600 mb-2"><strong>Size:</strong> 400g</p>
+                    <p class="text-sm text-gray-600 mb-2"><strong>Calories:</strong> 600 cal (half portion)</p>
+                    <p class="text-sm text-gray-600"><strong>Description:</strong> Sweet potato and butternut with sesame and onion seed sprinkle, balsamic dressing</p>
+                    <a href="https://www.woolworths.co.za/prod/_/A-6009233586378" target="_blank" class="inline-block mt-3 text-secondary hover:text-primary font-semibold text-sm">View on Woolworths →</a>
+                </div>
+            </div>
+
+            <!-- Roasted Butternut & Beetroot Salad -->
+            <div>
+                <button @click="openItem = openItem === 7 ? null : 7" class="w-full px-6 py-4 flex justify-between items-center hover:bg-gray-50 transition-colors">
+                    <span class="font-semibold text-primary">Roasted Butternut & Beetroot Salad</span>
+                    <svg :class="openItem === 7 ? 'rotate-180' : ''" class="w-5 h-5 text-gray-500 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                </button>
+                <div x-show="openItem === 7" x-collapse class="px-6 pb-4">
+                    <div class="w-full max-w-md mx-auto bg-gray-100 rounded-lg mb-3 h-48 flex items-center justify-center text-gray-400">
+                        <span class="text-sm">Image not available</span>
+                    </div>
+                    <p class="text-sm text-gray-600 mb-2"><strong>Size:</strong> 370g</p>
+                    <p class="text-sm text-gray-600 mb-2"><strong>Calories:</strong> ~370 cal</p>
+                    <p class="text-sm text-gray-600"><strong>Description:</strong> Roasted butternut and beetroot with creamy South African feta cheese and fresh rocket</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="text-center text-gray-500 text-sm mt-6 mb-4">
+            <p>Meal plan compiled from Woolworths South Africa products</p>
         </div>
     </div>
 </body>
